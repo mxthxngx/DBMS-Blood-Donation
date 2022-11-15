@@ -1,0 +1,51 @@
+{% extends 'newOrder.html' %}
+
+{% block content %}
+<h2>{% block title %} Donation_loc {% endblock %}</h2>
+
+<form method="POST" class="form">
+    <div class="form-group">
+        <label for="title">Patient ID</label>
+        <input type="text" name="p_id"
+               placeholder="Patient Name " class="form-control"
+               value="{{ request.form['p_id'] }}" required></input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Date</label>
+        <input type="date" name="p_dob"
+               placeholder="YYYY-MM-DD" class="form-control"
+               value="{{ request.form['p_dob'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="title">Blood Grp</label>
+               <select name="r_blood_grp" id="item-status" value = "{{ request.form['p_blood_grp'] }}">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+    </div>
+
+      
+    <div class="form-group">
+        <label for="title">Quantity</label>
+        <input type="number" name="quantity"
+               placeholder="Quantity" class="form-control"
+               value="{{ request.form['quantity']}}"></input>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    {% for message in messages %}
+    <li>{{ message }}</li>
+  {% endfor %}
+</form>
+{% endblock %}
+
